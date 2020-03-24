@@ -45,6 +45,7 @@
                }
             }
             if (list.includes(str+"_"+num)){
+               alert("checkdistinct2:"+str)
                checkDistinct(list,str,num++);
             }else{
                return str+"_"+num;
