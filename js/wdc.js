@@ -41,7 +41,7 @@
                   checkDistinct(list,str,num+1)
                }
                else {
-                  print("fin: "+str+"_"+num); 
+                  alert("fin0: "+str); 
                   return str;
                }
             }
@@ -49,7 +49,7 @@
                alert("checkdistinct2:"+str)   
                checkDistinct(list,str,num+1);
             }else{
-               print("fin: "+str+"_"+num);
+               alert("fin1: "+str+"_"+num);
                return str+"_"+num;
             };
          };
