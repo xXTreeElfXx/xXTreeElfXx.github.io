@@ -87,7 +87,7 @@
          var columns = firstLine.replace(/\s+/g, '_').split(",");
          dataByRow.shift()
 			var finalDataTableRows = [];
-         for (var row_idx = 0; row_idx<15; row_idx++){ //dataByRow.length
+         for (var row_idx = 0; row_idx<15; row_idx++){ //dataByRow.length 
             rowTableData={};
             splitRow=dataByRow[row_idx].split(",");
             for (var col_idx = 0; col_idx<columns.length; col_idx++) {
