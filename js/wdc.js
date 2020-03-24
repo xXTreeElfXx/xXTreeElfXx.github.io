@@ -4,15 +4,18 @@
 	myConnector.getSchema = function(schemaCallback) {
       var paramObj = JSON.parse(tableau.connectionData);
       var paramString="?";
-      paramObj["parameters"][0][1]=(Math.round((new Date()).getTime() / 1000)).toString();
       for (const param of paramObj["parameters"]){ 
+         if (param[0]=="start"){
+            paramString+=param[0]+"="+(Math.round((new Date()).getTime() / 1000)).toString()+"&";
+            continue;
+         }
          if (param[0].length>0 && param[1].length>0) { 
             paramString+=param[0]+"="+param[1]+"&";  
          };
       };
-   
       paramString=paramString.slice(0,-1);
       var user_url = paramObj["user_url"] + paramString;
+
       apiCall={
          url: user_url,
          type: "GET",
@@ -28,7 +31,6 @@
       $.ajax(apiCall).done(successFunction);
  
 		function successFunction(data) {
-         alert(data)
          var firstLine = data.split('\n')[0];
          var columns = firstLine.replace(/\s+/g, '_').split(",");
          var cols=[]
@@ -57,12 +59,16 @@
             };
             cols.push(y);
          }; 
-         alert(colsdistinct)
-         alert(cols)
+         cols.push({
+            id: "timestamp",
+            alias: "timestamp", 
+            dataType: tableau.dataTypeEnum.int
+         })
 			var tableInfo = {
 				id: "WDCDataGithub",
 				alias: "WDCTestingGithub",
-				columns: cols
+            columns: cols,
+            incrementColumnId: "timestamp"
 			};
 
 			schemaCallback([tableInfo]);
@@ -71,15 +77,19 @@
 
 	myConnector.getData = function(table, doneCallback) {
       var paramObj = JSON.parse(tableau.connectionData);
+      var lastTime = parseInt(table.incrementValue || -1);
       var paramString="?";
       for (const param of paramObj["parameters"]){
+         if (lastTime!=-1 && param[0]=="start"){
+            paramString+=param[0]+"="+lastTime+"&";
+            continue;
+         }
          if (param[0].length>0 && param[1].length>0) {
             paramString+=param[0]+"="+param[1]+"&";
          };
       };
       paramString=paramString.slice(0,-1);
       var user_url = paramObj["user_url"] + paramString;
-      alert(user_url);
       apiCall={
          url: user_url,
          //data: { signature: authHeader },
@@ -87,6 +97,7 @@
          beforeSend: function(xhr){xhr.setRequestHeader('Authorization', "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODczNTk5MTIsImlhdCI6MTU4NDc2NzkxMiwiaXNzIjoiYXV0aDpwcm9kdWN0aW9uIiwic2VyYTpzaWQiOiIxNzk1MTcxOC0xNzBjLTRhMmEtOGYwNi05NWI3MzhhMGY5OTYiLCJzZXJhOnRlYW1JZCI6IiIsInNlcmE6dHlwIjoiYXV0aCIsInN1YiI6IjNkNDQ3ZTNmLWI5MWYtNDgyNi04YjZiLTA4M2VjYWZmMGU1NyJ9.6nRSHLncB8hIgX6Sreh-MvwwfjaKXS3Hhm_ej-VHMKA");},
          success: function() { alert('Success!'); }
       }    
+      
       apiCall={
          url: user_url,
          type: "GET",
@@ -99,22 +110,26 @@
          success: function() { alert('Success!'); }
       }
       $.ajax(apiCall).done(successFunction);
+
 		function successFunction(data) {
          var dataByRow = Papa.parse(data).data;
-         //alert("dataByRow"+dataByRow)
-         alert("dataByRow[row_idx]"+dataByRow[0])
          for(var row_idx=1; row_idx<dataByRow.length;row_idx++){
             rowTableData={};
             splitRow=dataByRow[row_idx];
-            //alert(splitRow)
-            //alert(colsdistinct+"   "+colsdistinct.length)
             for (var col_idx = 0; col_idx<colsdistinct.length; col_idx++) { 
-               //alert(colsdistinct[col_idx]+": "+splitRow[col_idx]);
                rowTableData[colsdistinct[col_idx]]=splitRow[col_idx];
             };
-            //finalDataTableRows.push(rowTableData);
-            //alert("dataByRow[row_idx]"+dataByRow[row_idx])
-            
+            //alert(rowTableData["Date"].slice(0,4)+" "+rowTableData["Date"].slice(5,7)+" "+rowTableData["Date"].slice(8)+" "+parseInt(rowTableData["Time"].slice(0,2))+" "+parseInt(rowTableData["Time"].slice(3,5))+" "+parseInt(rowTableData["Time"].slice(6)))
+            if (rowTableData["Date"]!=null && rowTableData["Time"]!=null){
+            //alert("Time:"+rowTableData["Time"]+"  Date:"+rowTableData["Date"])
+               d=new Date(parseInt(rowTableData["Date"].slice(0,4)),parseInt(rowTableData["Date"].slice(5,7)),parseInt(rowTableData["Date"].slice(8)),parseInt(rowTableData["Time"].slice(0,2)),parseInt(rowTableData["Time"].slice(3,5)),parseInt(rowTableData["Time"].slice(6)))
+               rowTableData["timestamp"]=Math.trunc(d.getTime()/1000);
+            } else if((rowTableData["Date"]!=null)){
+               d=new Date(parseInt(rowTableData["Date"].slice(0,4)),parseInt(rowTableData["Date"].slice(5,7)),parseInt(rowTableData["Date"].slice(8)),parseInt(rowTableData["Time"].slice(0,2)),parseInt(rowTableData["Time"].slice(3,5)),parseInt(rowTableData["Time"].slice(6)))
+               rowTableData["timestamp"]=Math.trunc(d.getTime()/1000);
+            } else {
+               rowTableData["timestamp"]=null
+            }
             table.appendRows([rowTableData]);
             if (row_idx % 100 === 0) {
                tableau.reportProgress("Getting row: " + row_idx);
@@ -122,24 +137,6 @@
          }
          doneCallback();
 
-         /* 
-         for (var row_idx = 0; row_idx<dataByRow.length ; row_idx++){
-            rowTableData={};
-            splitRow=dataByRow[row_idx].split(",");
-            //alert(colsdistinct+"   "+colsdistinct.length)
-            for (var col_idx = 0; col_idx<colsdistinct.length; col_idx++) { 
-               //alert(colsdistinct[col_idx]+": "+splitRow[col_idx]);
-               rowTableData[colsdistinct[col_idx]]=splitRow[col_idx];
-            };
-            //finalDataTableRows.push(rowTableData);
-            table.appendRows([rowTableData]);
-            if (row_index % 100 === 0) {
-               tableau.reportProgress("Getting row: " + row_index);
-            }
-         };
-         //table.appendRows(finalDataTableRows);
-			doneCallback();
-			*/
 		}
 	}; 
 
