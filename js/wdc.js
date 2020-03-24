@@ -113,7 +113,7 @@
 
 		function successFunction(data) {
          var dataByRow = Papa.parse(data).data;
-         for(var row_idx=1; row_idx<dataByRow.length;row_idx++){
+         for(var row_idx=1; row_idx<dataByRow.length;row_idx++){ 
             rowTableData={};
             splitRow=dataByRow[row_idx];
             for (var col_idx = 0; col_idx<colsdistinct.length; col_idx++) { 
