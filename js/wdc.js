@@ -1,7 +1,7 @@
 (function() {
    var user_url = "https://api.parsable.net/api/analytics/extract/d709050f-7470-4e70-ac4d-5353b320126d?start=1556848460&type=inputs"
 	var myConnector = tableau.makeConnector();
-	var colsdistinct =[]
+	var colsdistinct =[] 
 	myConnector.getSchema = function(schemaCallback) {
       var paramObj = JSON.parse(tableau.connectionData);
       var paramString="?";
