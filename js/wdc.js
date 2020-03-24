@@ -101,7 +101,10 @@
       $.ajax(apiCall).done(successFunction);
 		function successFunction(data) {
          var dataByRow = Papa.parse(data, {header: true});
+         alert(dataByRow)
          for(var row_idx=0; row_idx<dataByRow.length;row_idx++){
+            alert(dataByRow[row_idx])
+            
             table.appendRows([dataByRow[row_idx]]);
             if (row_idx % 100 === 0) {
                tableau.reportProgress("Getting row: " + row_idx);
