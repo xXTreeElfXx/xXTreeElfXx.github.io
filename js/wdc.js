@@ -11,6 +11,7 @@
             paramString+=param[0]+"="+param[1]+"&"; 
          };
       };
+   
       paramString=paramString.slice(0,-1);
       var user_url = paramObj["user_url"] + paramString;
       apiCall={
@@ -24,7 +25,7 @@
             }},
          success: function() { alert('Success!'); }
       }
-      
+      alert(user_url)
       $.ajax(apiCall).done(successFunction);
 
 		function successFunction(data) {
