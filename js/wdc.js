@@ -34,13 +34,13 @@
          var columns = firstLine.replace(/\s+/g, '_').split(",");
          var cols=[]
          var colsdistinct=[]
-         function checkDistinct(list, str, num=0) {
+         function checkDistinct(list, str, num) {
             if(num==0){
                if (list.includes(str)){
                   checkDistinct(list,str,num++)
                }
                else {
-                  return str+"_"+num;
+                  return str;
                }
             }
             if (list.includes(str+"_"+num)){
