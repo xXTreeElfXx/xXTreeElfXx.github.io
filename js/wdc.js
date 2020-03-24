@@ -52,7 +52,7 @@
          for (var x = 0; x<columns.length; x++){ //columns.length
             var res=checkDistinct(colsdistinct,columns[x],0);
             colsdistinct.push(res);
-            y = {
+            y = {  
                id: colsdistinct[colsdistinct.length-1],
                alias: colsdistinct[colsdistinct.length-1], 
                dataType: tableau.dataTypeEnum.string
