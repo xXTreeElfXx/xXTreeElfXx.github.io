@@ -109,6 +109,7 @@
          for (var row_idx = 0; row_idx<dataByRow.length ; row_idx++){
             rowTableData={};
             splitRow=dataByRow[row_idx].split(",");
+            alert(colsdistinct+"   "+colsdistinct.length)
             for (var col_idx = 0; col_idx<colsdistinct.length; col_idx++) { 
                alert(colsdistinct[col_idx]+": "+splitRow[col_idx]);
                rowTableData[colsdistinct[col_idx]]=splitRow[col_idx];
