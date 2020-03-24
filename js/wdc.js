@@ -146,7 +146,7 @@
          doneCallback();
 
 		}
-	}; 
+	};  
 
    tableau.registerConnector(myConnector);
 
