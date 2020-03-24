@@ -52,7 +52,7 @@
             };
          };
          for (var x = 0; x<columns.length; x++){ //columns.length
-            colsdistinct.push(checkDistinct(colsdistinct,columns[x],0));
+            colsdistinct.push(checkDistinct(colsdistinct,columns[x],1));
             y = {
                id: columns[colsdistinct.length-1],
                alias: columns[colsdistinct.length-1], 
