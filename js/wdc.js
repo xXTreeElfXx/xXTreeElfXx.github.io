@@ -37,14 +37,14 @@
          function checkDistinct(list, str, num) {
             if(num==0){
                if (list.includes(str)){ 
-                  checkDistinct(list,str,num+1)
+                  return checkDistinct(list,str,num+1)
                }
                else {
                   return str;
                }
             }
             if (list.includes(str+"_"+num)){
-               checkDistinct(list,str,num+1);
+               return checkDistinct(list,str,num+1);
             }else{
                return str+"_"+num;
             };
