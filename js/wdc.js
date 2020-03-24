@@ -1,7 +1,7 @@
 (function() {
    var user_url = "https://api.parsable.net/api/analytics/extract/d709050f-7470-4e70-ac4d-5353b320126d?start=1556848460&type=inputs"
 	var myConnector = tableau.makeConnector();
-		
+	var colsdistinct
 	myConnector.getSchema = function(schemaCallback) {
       var paramObj = JSON.parse(tableau.connectionData);
       var paramString="?";
@@ -33,14 +33,32 @@
          var firstLine = data.split('\n')[0];
          var columns = firstLine.replace(/\s+/g, '_').split(",");
          var cols=[]
-         for (var x = 0; x<15; x++){ //columns.length
+         var colsdistinct=[]
+         function checkDistinct(list, str, num=0) {
+            if(num==0){
+               if (list.includes(str)){
+                  checkDistinct(list,str,num++)
+               }
+               else {
+                  return str+"_"+num;
+               }
+            }
+            if (list.includes(str+"_"+num)){
+               checkDistinct(list,str,num++);
+            }else{
+               return str+"_"+num;
+            };
+         };
+         for (var x = 0; x<columns.length; x++){ //columns.length
+            colsdistinct.push(checkDistinct(colsdistinct,columns[x],0));
             y = {
-               id: columns[x],
-               alias: columns[x], 
+               id: columns[colsdistinct.length-1],
+               alias: columns[colsdistinct.length-1], 
                dataType: tableau.dataTypeEnum.string
             };
             cols.push(y);
          };
+         alert(cols)
 			var tableInfo = {
 				id: "WDCDataGithub",
 				alias: "WDCTestingGithub",
@@ -90,7 +108,7 @@
          for (var row_idx = 0; row_idx<dataByRow.length ; row_idx++){
             rowTableData={};
             splitRow=dataByRow[row_idx].split(",");
-            for (var col_idx = 0; col_idx<15; col_idx++) { //columns.length
+            for (var col_idx = 0; col_idx<columns.length; col_idx++) { //
                rowTableData[columns[col_idx]]=splitRow[col_idx];
             };
             finalDataTableRows.push(rowTableData);
