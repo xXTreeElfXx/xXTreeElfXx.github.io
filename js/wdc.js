@@ -36,7 +36,7 @@
          for (var x = 0; x<columns.length; x++){
             y = {
                id: columns[x],
-               alias: columns[x],
+               alias: columns[x], 
                dataType: tableau.dataTypeEnum.string
             };
             cols.push(y);
