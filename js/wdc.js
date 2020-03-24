@@ -83,10 +83,10 @@
       apiCall={
          url: user_url,
          //data: { signature: authHeader },
-         type: "GET",
+         type: "GET", 
          beforeSend: function(xhr){xhr.setRequestHeader('Authorization', "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODczNTk5MTIsImlhdCI6MTU4NDc2NzkxMiwiaXNzIjoiYXV0aDpwcm9kdWN0aW9uIiwic2VyYTpzaWQiOiIxNzk1MTcxOC0xNzBjLTRhMmEtOGYwNi05NWI3MzhhMGY5OTYiLCJzZXJhOnRlYW1JZCI6IiIsInNlcmE6dHlwIjoiYXV0aCIsInN1YiI6IjNkNDQ3ZTNmLWI5MWYtNDgyNi04YjZiLTA4M2VjYWZmMGU1NyJ9.6nRSHLncB8hIgX6Sreh-MvwwfjaKXS3Hhm_ej-VHMKA");},
          success: function() { alert('Success!'); }
-      }  
+      }    
       apiCall={
          url: user_url,
          type: "GET",
