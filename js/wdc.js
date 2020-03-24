@@ -41,6 +41,7 @@
                   checkDistinct(list,str,num+1)
                }
                else {
+                  print("fin: "+str+"_"+num);
                   return str;
                }
             }
@@ -48,11 +49,12 @@
                alert("checkdistinct2:"+str)   
                checkDistinct(list,str,num+1);
             }else{
+               print("fin: "+str+"_"+num);
                return str+"_"+num;
             };
          };
          for (var x = 0; x<columns.length; x++){ //columns.length
-            colsdistinct.push(checkDistinct(colsdistinct,columns[x],1));
+            colsdistinct.push(checkDistinct(colsdistinct,columns[x],0));
             y = {
                id: columns[colsdistinct.length-1],
                alias: columns[colsdistinct.length-1], 
