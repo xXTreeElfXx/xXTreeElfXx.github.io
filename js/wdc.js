@@ -40,8 +40,8 @@
             cols.push(y);
          };
 			var tableInfo = {
-				id: "WDCData",
-				alias: "WDCTesting",
+				id: "WDCDataOnGithub",
+				alias: "WDCTestingOnGithub",
 				columns: cols
 			};
 
@@ -120,7 +120,7 @@
             ]
          };
          tableau.connectionData = JSON.stringify(paramObj);
-         tableau.connectionName = "USGS Earthquake Feed"; // This will be the data source name in Tableau
+         tableau.connectionName = "Parsable WDC"; // This will be the data source name in Tableau
          tableau.submit(); 
 		});
 	});
