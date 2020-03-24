@@ -122,7 +122,7 @@
          }
          doneCallback();
 
-         /*
+         /* 
          for (var row_idx = 0; row_idx<dataByRow.length ; row_idx++){
             rowTableData={};
             splitRow=dataByRow[row_idx].split(",");
