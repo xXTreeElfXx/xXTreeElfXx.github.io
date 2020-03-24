@@ -105,14 +105,13 @@
 		function successFunction(data) {
          var dataByRow = data.split('\n');
          var firstLine = dataByRow[0];
-         var columns = firstLine.replace(/\s+/g, '_').split(",");
          dataByRow.shift()
 			var finalDataTableRows = [];
          for (var row_idx = 0; row_idx<dataByRow.length ; row_idx++){
             rowTableData={};
             splitRow=dataByRow[row_idx].split(",");
-            for (var col_idx = 0; col_idx<columns.length; col_idx++) { 
-               rowTableData[columns[col_idx]]=splitRow[col_idx];
+            for (var col_idx = 0; col_idx<colsdistinct.length; col_idx++) { 
+               rowTableData[colsdistinct[col_idx]]=splitRow[col_idx];
             };
             finalDataTableRows.push(rowTableData);
          };
