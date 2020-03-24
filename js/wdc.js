@@ -59,7 +59,7 @@
                dataType: tableau.dataTypeEnum.string
             };
             cols.push(y);
-         };  
+         }; 
          alert(colsdistinct)
          alert(cols)
 			var tableInfo = {
