@@ -38,7 +38,7 @@
             if(num==0){
                if (list.includes(str)){ 
                   alert("checkdistinct:"+str)
-                  checkDistinct(list,str,num++)
+                  checkDistinct(list,str,num+1)
                }
                else {
                   return str;
@@ -46,7 +46,7 @@
             }
             if (list.includes(str+"_"+num)){
                alert("checkdistinct2:"+str)  
-               checkDistinct(list,str,num++);
+               checkDistinct(list,str,num+1);
             }else{
                return str+"_"+num;
             };
