@@ -48,7 +48,7 @@
             }else{
                return str+"_"+num;
             };
-         };
+         };  
          for (var x = 0; x<columns.length; x++){ //columns.length
             var res=checkDistinct(colsdistinct,columns[x],0);
             alert(res);  
