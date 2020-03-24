@@ -54,8 +54,8 @@
             alert(res);  
             colsdistinct.push(res);
             y = {
-               id: columns[colsdistinct.length-1],
-               alias: columns[colsdistinct.length-1], 
+               id: colsdistinct[colsdistinct.length-1],
+               alias: colsdistinct[colsdistinct.length-1], 
                dataType: tableau.dataTypeEnum.string
             };
             cols.push(y);
