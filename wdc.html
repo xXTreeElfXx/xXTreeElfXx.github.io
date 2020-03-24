@@ -8,62 +8,73 @@
     <script src="https://unpkg.com/papaparse@latest/papaparse.min.js"></script>
     <script src="https://connectors.tableau.com/libs/tableauwdc-2.3.latest.js" type="text/javascript"></script>
     <script src="js/wdc.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="css/style.css">
 </head> 
  
-<body>
+<body style="background-color:#f0f0f0">
     <div class="container container-table">
+      <br>
+      <img src="imgs/parsable.png" class="responsive"><font size="+3"><br>Tableau Web Data Connector for Parsable API </font></p> 
+      <b>
+         
+      <br>
       Request URL:
-
+      <br>
+       </b>
       <input type="text" class="form-control" id="user_url" value="https://api.parsable.net/api/analytics/extract/af0f7eed-653e-43d3-8775-cecec29910e4">
-
-      Parameters:
-
+      <b>
+      <br>
+      Parameters (param : value):
+      <br>
+      </b>
       <div class="form-inline">
-      <input type="text" class="form-control" id="param-1" value="start">
+      <input type="text" class="form-control" id="param-1" value="start"><b> :</b>
       <input type="text" class="form-control" id="param-value-1" value="1584242637">
       </div>
       <div class="form-inline">
-         <input type="text" class="form-control" id="param-2" value="end">
+         <input type="text" class="form-control" id="param-2" value="end"><b> :</b>
          <input type="text" class="form-control" id="param-value-2" value="">
       </div>
       <div class="form-inline">
-         <input type="text" class="form-control" id="param-3" value="type">
+         <input type="text" class="form-control" id="param-3" value="type"><b> :</b>
          <input type="text" class="form-control" id="param-value-3" value="inputs">
       </div> 
       <div class="form-inline">
-         <input type="text" class="form-control" id="param-4" value="">
+         <input type="text" class="form-control" id="param-4" value=""><b> :</b>
          <input type="text" class="form-control" id="param-value-4" value="">
       </div>
       <div class="form-inline">
-         <input type="text" class="form-control" id="param-5" value="">
+         <input type="text" class="form-control" id="param-5" value=""><b> :</b>
          <input type="text" class="form-control" id="param-value-5" value="">
       </div>
-
+      <br>
+      <b>
       Headers:
-
+   </b>
+      <br>
       <div class="form-inline">
-         <input type="text" class="form-control" id="head-1" value="Authorization">
+         <input type="text" class="form-control" id="head-1" value="Authorization"><b> :</b>
          <input type="text" class="form-control" id="head-value-1" value="Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODY2MjUyMTIsImlhdCI6MTU4NDAzMzIxMiwiaXNzIjoiYXV0aDpwcm9kdWN0aW9uIiwic2VyYTpzaWQiOiI0OGFjMTNjNC04ZDVmLTRhM2EtOTBiZi00NzM2Mjg5YjMzOWMiLCJzZXJhOnRlYW1JZCI6IiIsInNlcmE6dHlwIjoiYXV0aCIsInN1YiI6IjI1ZmY3ZWRkLWVkZTEtNGExMS1hYzlmLWVjNjMyNWI2ZmQ3NCJ9.GVfNI_ZppE-YpJmDNrRK1WjEPkifqjXTpkZudqP8UU8">
       </div>
       <div class="form-inline">
-         <input type="text" class="form-control" id="head-2" value="">
+         <input type="text" class="form-control" id="head-2" value=""><b> :</b>
          <input type="text" class="form-control" id="head-value-2" value="">
       </div>
       <div class="form-inline">
-         <input type="text" class="form-control" id="head-3" value="">
+         <input type="text" class="form-control" id="head-3" value=""><b> :</b>
          <input type="text" class="form-control" id="head-value-3" value="">
       </div>
       <div class="form-inline">
-         <input type="text" class="form-control" id="head-4" value="">
+         <input type="text" class="form-control" id="head-4" value=""><b> :</b>
          <input type="text" class="form-control" id="head-value-4" value="">
       </div>
       <div class="form-inline">
-         <input type="text" class="form-control" id="head-5" value="">
+         <input type="text" class="form-control" id="head-5" value=""><b> :</b>
          <input type="text" class="form-control" id="head-value-5" value="">
       </div>
       <div class="row vertical-center-row">
          <div class="text-center col-md-4 col-md-offset-4">
-            <button type = "button" id = "submitButton" class = "btn btn-success" style = "margin: 10px;">Get Earthquake Data!</button>
+            <button type = "button" id = "submitButton" class = "btn btn-success" style = "margin: 10px;">Get Parsable Data!</button>
          </div>
       </div>
     </div>

@@ -1,3 +1,8 @@
 .btn-success {
    margin: 20px;
 }
+.responsive {
+   width: auto;
+   max-height: 100px;
+   height: 100%;
+ }
