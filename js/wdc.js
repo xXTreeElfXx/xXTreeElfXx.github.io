@@ -21,7 +21,7 @@
             for (const head of paramObj["headers"]){
                if (head[0].length>0 && head[1].length>0) {
                   xhr.setRequestHeader(head[0], head[1]);
-               };
+               }; 
             }},
          success: function() { alert('Success!'); }
       }
