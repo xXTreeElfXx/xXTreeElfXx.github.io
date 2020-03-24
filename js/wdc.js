@@ -129,7 +129,7 @@
                var dttimestamp=d.getTime()-100000//2*120*d.getTimezoneOffset()
                var dt=new Date(dttimestamp)
                //alert("Timestamp: "+Math.trunc(d2.getTime()/1000))
-               //alert(s)
+               //alert(s) 
                rowTableData["timestamp"]=Math.trunc(dt.getTime()/1000);
             } else if((rowTableData["Date"]!=null)){
                //alert("Date:"+rowTableData["Date"])
