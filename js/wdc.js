@@ -144,7 +144,7 @@
    tableau.registerConnector(myConnector);
 
    $(document).ready(function() {
-      $("#submitButton").click(function() {
+      $("#submitButton").click(function() {  
          var paramObj = { "parameters": [
             [$('#param-1').val().trim(),$('#param-value-1').val().trim()], //param-1
             [$('#param-2').val().trim(),$('#param-value-2').val().trim()], //param-2 
