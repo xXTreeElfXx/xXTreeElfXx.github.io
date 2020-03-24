@@ -27,7 +27,7 @@
       }
       alert(user_url)
       $.ajax(apiCall).done(successFunction);
-
+ 
 		function successFunction(data) {
          alert(data)
          var firstLine = data.split('\n')[0];
