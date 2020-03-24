@@ -51,7 +51,6 @@
          };  
          for (var x = 0; x<columns.length; x++){ //columns.length
             var res=checkDistinct(colsdistinct,columns[x],0);
-            alert(res);  
             colsdistinct.push(res);
             y = {
                id: colsdistinct[colsdistinct.length-1],
@@ -111,6 +110,7 @@
             rowTableData={};
             splitRow=dataByRow[row_idx].split(",");
             for (var col_idx = 0; col_idx<colsdistinct.length; col_idx++) { 
+               alert(colsdistinct[col_idx]+": "+splitRow[col_idx]);
                rowTableData[colsdistinct[col_idx]]=splitRow[col_idx];
             };
             finalDataTableRows.push(rowTableData);
