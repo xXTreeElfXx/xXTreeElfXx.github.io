@@ -110,22 +110,29 @@
          success: function() { alert('Success!'); }
       }
       $.ajax(apiCall).done(successFunction);
-
 		function successFunction(data) {
          var dataByRow = Papa.parse(data).data;
          for(var row_idx=1; row_idx<dataByRow.length;row_idx++){ 
+            var d = 0
             rowTableData={};
             splitRow=dataByRow[row_idx];
             for (var col_idx = 0; col_idx<colsdistinct.length; col_idx++) { 
                rowTableData[colsdistinct[col_idx]]=splitRow[col_idx];
             };
-            //alert(rowTableData["Date"].slice(0,4)+" "+rowTableData["Date"].slice(5,7)+" "+rowTableData["Date"].slice(8)+" "+parseInt(rowTableData["Time"].slice(0,2))+" "+parseInt(rowTableData["Time"].slice(3,5))+" "+parseInt(rowTableData["Time"].slice(6)))
+            
             if (rowTableData["Date"]!=null && rowTableData["Time"]!=null){
-            //alert("Time:"+rowTableData["Time"]+"  Date:"+rowTableData["Date"])
-               d=new Date(parseInt(rowTableData["Date"].slice(0,4)),parseInt(rowTableData["Date"].slice(5,7)),parseInt(rowTableData["Date"].slice(8)),parseInt(rowTableData["Time"].slice(0,2)),parseInt(rowTableData["Time"].slice(3,5)),parseInt(rowTableData["Time"].slice(6)))
-               rowTableData["timestamp"]=Math.trunc(d.getTime()/1000);
+               //alert("Time:"+rowTableData["Time"]+"  Date:"+rowTableData["Date"])
+               
+               //alert("parse time: "+rowTableData["Date"].slice(0,4)+" "+rowTableData["Date"].slice(5,7)+" "+rowTableData["Date"].slice(8)+" "+parseInt(rowTableData["Time"].slice(0,2))+" "+parseInt(rowTableData["Time"].slice(3,5))+" "+parseInt(rowTableData["Time"].slice(6)))
+               d=new Date(year=parseInt(rowTableData["Date"].slice(0,4)),month=(parseInt(rowTableData["Date"].slice(5,7))-1),day=parseInt(rowTableData["Date"].slice(8)),hour=parseInt(rowTableData["Time"].slice(0,2)),minute=parseInt(rowTableData["Time"].slice(3,5)),second=parseInt(rowTableData["Time"].slice(6)))
+               //alert("d.getTime()= "+d.getTime()+ "     2*60*d.getTimezoneOffset():  "+2*60*d.getTimezoneOffset())
+               var d3timestamp=d.getTime()-60*d.getTimezoneOffset()
+               var dt=new Date(d3timestamp)
+               //alert("Timestamp: "+Math.trunc(d2.getTime()/1000))
+               //alert(s)
+               rowTableData["timestamp"]=Math.trunc(dt.getTime()/1000);
             } else if((rowTableData["Date"]!=null)){
-               alert("Date:"+rowTableData["Date"])
+               //alert("Date:"+rowTableData["Date"])
                d=new Date(parseInt(rowTableData["Date"].slice(0,4)),parseInt(rowTableData["Date"].slice(5,7)),parseInt(rowTableData["Date"].slice(8)))
                rowTableData["timestamp"]=Math.trunc(d.getTime()/1000);
             } else {
