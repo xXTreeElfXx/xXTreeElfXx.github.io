@@ -108,7 +108,7 @@
          for (var row_idx = 0; row_idx<dataByRow.length ; row_idx++){
             rowTableData={};
             splitRow=dataByRow[row_idx].split(",");
-            for (var col_idx = 0; col_idx<columns.length; col_idx++) { //
+            for (var col_idx = 0; col_idx<columns.length; col_idx++) { 
                rowTableData[columns[col_idx]]=splitRow[col_idx];
             };
             finalDataTableRows.push(rowTableData);
