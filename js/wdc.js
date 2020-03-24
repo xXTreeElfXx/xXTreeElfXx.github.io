@@ -58,6 +58,7 @@
             };
             cols.push(y);
          };
+         alert(colsdistinct)
          alert(cols)
 			var tableInfo = {
 				id: "WDCDataGithub",
