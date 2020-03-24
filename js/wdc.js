@@ -8,7 +8,7 @@
       paramObj["parameters"]["time"]="1585019371";
       for (const param of paramObj["parameters"]){
          if (param[0].length>0 && param[1].length>0) {
-            paramString+=param[0]+"="+param[1]+"&";
+            paramString+=param[0]+"="+param[1]+"&"; 
          };
       };
       paramString=paramString.slice(0,-1);
