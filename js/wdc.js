@@ -33,7 +33,7 @@
          var firstLine = data.split('\n')[0];
          var columns = firstLine.replace(/\s+/g, '_').split(",");
          var cols=[]
-         for (var x = 0; x<columns.length; x++){
+         for (var x = 0; x<15; x++){ //columns.length
             y = {
                id: columns[x],
                alias: columns[x], 
@@ -87,10 +87,10 @@
          var columns = firstLine.replace(/\s+/g, '_').split(",");
          dataByRow.shift()
 			var finalDataTableRows = [];
-         for (var row_idx = 0; row_idx<15; row_idx++){ //dataByRow.length 
+         for (var row_idx = 0; row_idx<dataByRow.length ; row_idx++){
             rowTableData={};
             splitRow=dataByRow[row_idx].split(",");
-            for (var col_idx = 0; col_idx<columns.length; col_idx++) {
+            for (var col_idx = 0; col_idx<15; col_idx++) { //columns.length
                rowTableData[columns[col_idx]]=splitRow[col_idx];
             };
             finalDataTableRows.push(rowTableData);
