@@ -33,7 +33,6 @@
          var firstLine = data.split('\n')[0];
          var columns = firstLine.replace(/\s+/g, '_').split(",");
          var cols=[]
-         var colsdistinct=[]
          function checkDistinct(list, str, num) {
             if(num==0){
                if (list.includes(str)){ 
