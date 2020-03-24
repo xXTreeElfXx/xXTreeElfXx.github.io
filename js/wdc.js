@@ -107,7 +107,7 @@
          dataByRow.shift()
 			var finalDataTableRows = [];
          for (var row_idx = 0; row_idx<dataByRow.length ; row_idx++){
-            rowTableData={};
+            rowTableData={};  
             splitRow=dataByRow[row_idx].split(",");
             alert(colsdistinct+"   "+colsdistinct.length)
             for (var col_idx = 0; col_idx<colsdistinct.length; col_idx++) { 
