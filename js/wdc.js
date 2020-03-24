@@ -42,8 +42,8 @@
             cols.push(y);
          };
 			var tableInfo = {
-				id: "WDCDataOnGithub",
-				alias: "WDCTestingOnGithub",
+				id: "WDCDataGithub",
+				alias: "WDCTestingGithub",
 				columns: cols
 			};
 
