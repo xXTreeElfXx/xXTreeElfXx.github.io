@@ -124,11 +124,11 @@
             //alert("Time:"+rowTableData["Time"]+"  Date:"+rowTableData["Date"])
                d=new Date(parseInt(rowTableData["Date"].slice(0,4)),parseInt(rowTableData["Date"].slice(5,7)),parseInt(rowTableData["Date"].slice(8)),parseInt(rowTableData["Time"].slice(0,2)),parseInt(rowTableData["Time"].slice(3,5)),parseInt(rowTableData["Time"].slice(6)))
                rowTableData["timestamp"]=Math.trunc(d.getTime()/1000);
-            } /*else if((rowTableData["Date"]!=null)){
-               alert(Date:"+rowTableData["Date"])
-               d=new Date(parseInt(rowTableData["Date"].slice(0,4)),parseInt(rowTableData["Date"].slice(5,7)),parseInt(rowTableData["Date"].slice(8)),parseInt(rowTableData["Time"].slice(0,2)),parseInt(rowTableData["Time"].slice(3,5)),parseInt(rowTableData["Time"].slice(6)))
+            } else if((rowTableData["Date"]!=null)){
+               alert("Date:"+rowTableData["Date"])
+               d=new Date(parseInt(rowTableData["Date"].slice(0,4)),parseInt(rowTableData["Date"].slice(5,7)),parseInt(rowTableData["Date"].slice(8)))
                rowTableData["timestamp"]=Math.trunc(d.getTime()/1000);
-            } */else {
+            } else {
                rowTableData["timestamp"]=null
             }
             table.appendRows([rowTableData]);
