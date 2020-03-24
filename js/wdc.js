@@ -120,7 +120,7 @@
 			doneCallback();
 			
 		}
-	};
+	}; 
 
    tableau.registerConnector(myConnector);
 
