@@ -1,11 +1,10 @@
 (function() {
-   var user_url = "https://api.parsable.net/api/analytics/extract/d709050f-7470-4e70-ac4d-5353b320126d?start=1556848460&type=inputs"
 	var myConnector = tableau.makeConnector();
 	var colsdistinct =[] 
 	myConnector.getSchema = function(schemaCallback) {
       var paramObj = JSON.parse(tableau.connectionData);
       var paramString="?";
-      paramObj["parameters"][0][1]="1585019371";
+      paramObj["parameters"][0][1]=Integer.toString(Math.round((new Date()).getTime() / 1000));
       for (const param of paramObj["parameters"]){ 
          if (param[0].length>0 && param[1].length>0) {   
             paramString+=param[0]+"="+param[1]+"&";  
@@ -113,9 +112,11 @@
                //alert(colsdistinct[col_idx]+": "+splitRow[col_idx]);
                rowTableData[colsdistinct[col_idx]]=splitRow[col_idx];
             };
-            finalDataTableRows.push(rowTableData);
+            //finalDataTableRows.push(rowTableData);
+            table.appendRows([rowTableData]);
+            tableau.reportProgress("Getting row: " + row_idx);
          };
-         table.appendRows(finalDataTableRows);
+         //table.appendRows(finalDataTableRows);
 			doneCallback();
 			
 		}
