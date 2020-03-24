@@ -135,7 +135,7 @@
                //alert("Date:"+rowTableData["Date"])
                d=new Date(parseInt(rowTableData["Date"].slice(0,4)),parseInt(rowTableData["Date"].slice(5,7)),parseInt(rowTableData["Date"].slice(8)))
                rowTableData["timestamp"]=Math.trunc(d.getTime()/1000);
-            } else {
+            } else { 
                rowTableData["timestamp"]=null
             }
             table.appendRows([rowTableData]);
