@@ -114,7 +114,9 @@
             };
             //finalDataTableRows.push(rowTableData);
             table.appendRows([rowTableData]);
-            tableau.reportProgress("Getting row: " + row_idx);
+            if (row_index % 100 === 0) {
+               tableau.reportProgress("Getting row: " + row_index);
+            }
          };
          //table.appendRows(finalDataTableRows);
 			doneCallback();
@@ -126,7 +128,6 @@
 
    $(document).ready(function() {
       $("#submitButton").click(function() {
-         alert($('#param-value-1').val().trim());
          var paramObj = { "parameters": [
             [$('#param-1').val().trim(),$('#param-value-1').val().trim()], //param-1
             [$('#param-2').val().trim(),$('#param-value-2').val().trim()], //param-2 
