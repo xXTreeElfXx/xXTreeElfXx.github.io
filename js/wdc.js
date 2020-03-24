@@ -100,12 +100,22 @@
       }
       $.ajax(apiCall).done(successFunction);
 		function successFunction(data) {
-         var dataByRow = Papa.parse(data, {header: true});
-         alert(dataByRow)
-         for(var row_idx=0; row_idx<dataByRow.length;row_idx++){
-            alert(dataByRow[row_idx])
+         var dataByRow = Papa.parse(data).data;
+         //alert("dataByRow"+dataByRow)
+         alert("dataByRow[row_idx]"+dataByRow[0])
+         for(var row_idx=1; row_idx<dataByRow.length;row_idx++){
+            rowTableData={};
+            splitRow=dataByRow[row_idx];
+            //alert(splitRow)
+            //alert(colsdistinct+"   "+colsdistinct.length)
+            for (var col_idx = 0; col_idx<colsdistinct.length; col_idx++) { 
+               //alert(colsdistinct[col_idx]+": "+splitRow[col_idx]);
+               rowTableData[colsdistinct[col_idx]]=splitRow[col_idx];
+            };
+            //finalDataTableRows.push(rowTableData);
+            //alert("dataByRow[row_idx]"+dataByRow[row_idx])
             
-            table.appendRows([dataByRow[row_idx]]);
+            table.appendRows([rowTableData]);
             if (row_idx % 100 === 0) {
                tableau.reportProgress("Getting row: " + row_idx);
             }
