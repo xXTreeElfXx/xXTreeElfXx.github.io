@@ -51,7 +51,7 @@
          };
          for (var x = 0; x<columns.length; x++){ //columns.length
             var res=checkDistinct(colsdistinct,columns[x],0);
-            alert(res);
+            alert(res);  
             colsdistinct.push(res);
             y = {
                id: columns[colsdistinct.length-1],
