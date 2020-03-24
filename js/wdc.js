@@ -4,7 +4,7 @@
 	myConnector.getSchema = function(schemaCallback) {
       var paramObj = JSON.parse(tableau.connectionData);
       var paramString="?";
-      paramObj["parameters"][0][1]=Integer.toString(Math.round((new Date()).getTime() / 1000));
+      paramObj["parameters"][0][1]=(Math.round((new Date()).getTime() / 1000)).toString();
       for (const param of paramObj["parameters"]){ 
          if (param[0].length>0 && param[1].length>0) {   
             paramString+=param[0]+"="+param[1]+"&";  
