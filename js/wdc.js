@@ -42,7 +42,7 @@
                else {
                   return str;
                }
-            }
+            } 
             if (list.includes(str+"_"+num)){
                return checkDistinct(list,str,num+1);
             }else{
