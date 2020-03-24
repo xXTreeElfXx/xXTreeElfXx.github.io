@@ -37,24 +37,22 @@
          function checkDistinct(list, str, num) {
             if(num==0){
                if (list.includes(str)){ 
-                  alert("checkdistinct:"+str)
                   checkDistinct(list,str,num+1)
                }
                else {
-                  alert("fin0: "+str); 
                   return str;
                }
             }
             if (list.includes(str+"_"+num)){
-               alert("checkdistinct2:"+str)   
                checkDistinct(list,str,num+1);
             }else{
-               alert("fin1: "+str+"_"+num);
                return str+"_"+num;
             };
          };
          for (var x = 0; x<columns.length; x++){ //columns.length
-            colsdistinct.push(checkDistinct(colsdistinct,columns[x],0));
+            var res=checkDistinct(colsdistinct,columns[x],0);
+            alert(res);
+            colsdistinct.push(res);
             y = {
                id: columns[colsdistinct.length-1],
                alias: columns[colsdistinct.length-1], 
