@@ -117,7 +117,7 @@
             [$('#head-3').val().trim(),$('#head-value-3').val().trim()],
             [$('#head-4').val().trim(),$('#head-value-4').val().trim()],
             [$('#head-5').val().trim(),$('#head-value-5').val().trim()],
-            ]
+            ] 
          };
          tableau.connectionData = JSON.stringify(paramObj);
          tableau.connectionName = "Parsable WDC"; // This will be the data source name in Tableau
