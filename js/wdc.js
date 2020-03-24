@@ -37,6 +37,7 @@
          function checkDistinct(list, str, num) {
             if(num==0){
                if (list.includes(str)){
+                  alert("checkdistinct:"+str)
                   checkDistinct(list,str,num++)
                }
                else {
