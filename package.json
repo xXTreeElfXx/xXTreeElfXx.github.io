@@ -1,0 +1,13 @@
+{
+  "name": "tableau_wdc_star_wars_test",
+  "version": "1.0.0",
+  "description": "Testing First Web Data Connector",
+  "main": "index.js",
+  "repository": "https://github.com/xXTreeElfXx/tableau_wdc__test",
+  "author": "xXTreeElfXx <vadim.prokopov2002@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^4.4.1",
+    "jquery": "^3.4.1"
+  }
+}
