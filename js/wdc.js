@@ -92,7 +92,7 @@
       };
       paramString=paramString.slice(0,-1);
       var user_url = paramObj["user_url"] + paramString;
-      
+      alert(user_url)
       apiCall={
          url: user_url,
          type: "GET",
