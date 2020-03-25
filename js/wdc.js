@@ -134,8 +134,8 @@
             } else if((rowTableData["Date"]!=null)){
                //alert("Date:"+rowTableData["Date"])
                d=new Date(parseInt(rowTableData["Date"].slice(0,4)),parseInt(rowTableData["Date"].slice(5,7)),parseInt(rowTableData["Date"].slice(8)))
-               var dttimestamp=d.getTime()-120*d.getTimezoneOffset()
-               var dt=new Date(dttimestamp)
+               var dttimestamp=d.getTime()-60*d.getTimezoneOffset()*1000
+               var dt=new Date(dttimestamp) 
                rowTableData["timestamp"]=Math.trunc(dt.getTime()/1000);
             } else { 
                rowTableData["timestamp"]=null
