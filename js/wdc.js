@@ -121,7 +121,7 @@
             };
             
             if (rowTableData["Date"]!=null && rowTableData["Time"]!=null){
-               //alert("Time:"+rowTableData["Time"]+"  Date:"+rowTableData["Date"])
+               //alert("Time:"+rowTableData["Time"]+"  Date:"+rowTableData["Date"])  
                
                //alert("parse time: "+rowTableData["Date"].slice(0,4)+" "+rowTableData["Date"].slice(5,7)+" "+rowTableData["Date"].slice(8)+" "+parseInt(rowTableData["Time"].slice(0,2))+" "+parseInt(rowTableData["Time"].slice(3,5))+" "+parseInt(rowTableData["Time"].slice(6)))
                d=new Date(year=parseInt(rowTableData["Date"].slice(0,4)),month=(parseInt(rowTableData["Date"].slice(5,7))-1),day=parseInt(rowTableData["Date"].slice(8)),hour=parseInt(rowTableData["Time"].slice(0,2)),minute=parseInt(rowTableData["Time"].slice(3,5)),second=parseInt(rowTableData["Time"].slice(6)))
