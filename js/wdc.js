@@ -114,7 +114,7 @@
             for (var col_idx = 0; col_idx<colsdistinct.length; col_idx++) { 
                rowTableData[colsdistinct[col_idx]]=splitRow[col_idx];
             };
-              
+               
             if (rowTableData["Date"]!=null && rowTableData["Time"]!=null){
                d=new Date(year=parseInt(rowTableData["Date"].slice(0,4)),month=(parseInt(rowTableData["Date"].slice(5,7))-1),day=parseInt(rowTableData["Date"].slice(8)),hour=parseInt(rowTableData["Time"].slice(0,2)),minute=parseInt(rowTableData["Time"].slice(3,5)),second=parseInt(rowTableData["Time"].slice(6)))
                var dttimestamp=d.getTime()-60*d.getTimezoneOffset()*1000
