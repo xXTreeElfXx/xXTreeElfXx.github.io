@@ -27,7 +27,6 @@
             }},
          success: function() { alert('Success!'); }
       }
-      alert(user_url)
       $.ajax(apiCall).done(successFunction);
  
 		function successFunction(data) {
@@ -93,13 +92,6 @@
       };
       paramString=paramString.slice(0,-1);
       var user_url = paramObj["user_url"] + paramString;
-      apiCall={
-         url: user_url,
-         //data: { signature: authHeader },
-         type: "GET", 
-         beforeSend: function(xhr){xhr.setRequestHeader('Authorization', "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODczNTk5MTIsImlhdCI6MTU4NDc2NzkxMiwiaXNzIjoiYXV0aDpwcm9kdWN0aW9uIiwic2VyYTpzaWQiOiIxNzk1MTcxOC0xNzBjLTRhMmEtOGYwNi05NWI3MzhhMGY5OTYiLCJzZXJhOnRlYW1JZCI6IiIsInNlcmE6dHlwIjoiYXV0aCIsInN1YiI6IjNkNDQ3ZTNmLWI5MWYtNDgyNi04YjZiLTA4M2VjYWZmMGU1NyJ9.6nRSHLncB8hIgX6Sreh-MvwwfjaKXS3Hhm_ej-VHMKA");},
-         success: function() { alert('Success!'); }
-      }    
       
       apiCall={
          url: user_url,
@@ -124,18 +116,11 @@
             };
               
             if (rowTableData["Date"]!=null && rowTableData["Time"]!=null){
-               //alert("Time:"+rowTableData["Time"]+"  Date:"+rowTableData["Date"])  
-               
-               //alert("parse time: "+rowTableData["Date"].slice(0,4)+" "+rowTableData["Date"].slice(5,7)+" "+rowTableData["Date"].slice(8)+" "+parseInt(rowTableData["Time"].slice(0,2))+" "+parseInt(rowTableData["Time"].slice(3,5))+" "+parseInt(rowTableData["Time"].slice(6)))
                d=new Date(year=parseInt(rowTableData["Date"].slice(0,4)),month=(parseInt(rowTableData["Date"].slice(5,7))-1),day=parseInt(rowTableData["Date"].slice(8)),hour=parseInt(rowTableData["Time"].slice(0,2)),minute=parseInt(rowTableData["Time"].slice(3,5)),second=parseInt(rowTableData["Time"].slice(6)))
-               //alert("d.getTime()= "+d.getTime()+ "     2*60*d.getTimezoneOffset():  "+2*60*d.getTimezoneOffset())
                var dttimestamp=d.getTime()-60*d.getTimezoneOffset()*1000
                var dt=new Date(dttimestamp) 
-               //alert("Timestamp: "+Math.trunc(d2.getTime()/1000))
-               //alert(s)  
                rowTableData["timestamp"]=Math.trunc(dt.getTime()/1000);
             } else if((rowTableData["Date"]!=null)){
-               //alert("Date:"+rowTableData["Date"])
                d=new Date(parseInt(rowTableData["Date"].slice(0,4)),parseInt(rowTableData["Date"].slice(5,7)),parseInt(rowTableData["Date"].slice(8)))
                var dttimestamp=d.getTime()-60*d.getTimezoneOffset()*1000
                var dt=new Date(dttimestamp) 
@@ -154,12 +139,24 @@
 	};  
 
    tableau.registerConnector(myConnector);
-
+   function retrieveTimestamp(value,date){
+      if (value!=""){
+         return value
+      } else if (date!=""){
+         d=new Date(year=parseInt(date.slice(0,4)),month=(parseInt(date.slice(5,7))-1),day=parseInt(date.slice(8,10)),hour=parseInt(date.slice(11,13)),minute=parseInt(date.slice(14,16)),second=parseInt(date.slice(17)))
+         var dttimestamp=d.getTime()-60*d.getTimezoneOffset()*1000
+         var dt=new Date(dttimestamp) 
+         console.log(Math.trunc(dt.getTime()/1000))
+         return Math.trunc(dt.getTime()/1000);
+      }
+      return ""
+      
+   }
    $(document).ready(function() {
       $("#submitButton").click(function() {  
          var paramObj = { "parameters": [
-            [$('#param-1').val().trim(),$('#param-value-1').val().trim()], //param-1
-            [$('#param-2').val().trim(),$('#param-value-2').val().trim()], //param-2 
+            [$('#param-1').val().trim(), retrieveTimestamp($('#param-value-1').val().trim(), $('#param-date-1').val().trim())], //param-1
+            [$('#param-2').val().trim(), retrieveTimestamp($('#param-value-2').val().trim(), $('#param-date-2').val().trim())], //param-2 
             [$('#param-3').val().trim(),$('#param-value-3').val().trim()], //param-3
             [$('#param-4').val().trim(),$('#param-value-4').val().trim()], //param-4
             [$('#param-5').val().trim(),$('#param-value-5').val().trim()]], //param-5
