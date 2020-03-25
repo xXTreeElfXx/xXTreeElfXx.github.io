@@ -84,6 +84,9 @@
             paramString+=param[0]+"="+lastTime+"&";
             continue;
          }
+         if (lastTime!=-1 && param[0]=="end"){
+            continue;
+         }
          if (param[0].length>0 && param[1].length>0) {
             paramString+=param[0]+"="+param[1]+"&";
          };
