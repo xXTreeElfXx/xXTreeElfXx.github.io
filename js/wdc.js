@@ -78,7 +78,9 @@
       var paramObj = JSON.parse(tableau.connectionData);
       var lastTime = parseInt(table.incrementValue || -1);
       var paramString="?";
+      alert(lastTime)
       for (const param of paramObj["parameters"]){
+         alert("param[0] "+param[0] + typeof param[0]+" param[1] "+param[1]+typeof param[1])
          if (lastTime!=-1 && param[0]=="start"){
             paramString+=param[0]+"="+(lastTime+1)+"&";
             continue;
@@ -87,6 +89,7 @@
             continue;
          }
          if (param[0].length>0 && param[1].length>0) {
+            alert("paramString!: param[0] "+param[0]+" param[1] "+param[1])
             paramString+=param[0]+"="+param[1]+"&";
          };
       };
@@ -147,7 +150,7 @@
          var dttimestamp=d.getTime()-60*d.getTimezoneOffset()*1000
          var dt=new Date(dttimestamp) 
          console.log(Math.trunc(dt.getTime()/1000))
-         return Math.trunc(dt.getTime()/1000);
+         return Math.trunc(dt.getTime()/1000)+"";
       }
       return ""
       
