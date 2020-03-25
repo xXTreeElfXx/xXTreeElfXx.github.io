@@ -126,8 +126,8 @@
                //alert("parse time: "+rowTableData["Date"].slice(0,4)+" "+rowTableData["Date"].slice(5,7)+" "+rowTableData["Date"].slice(8)+" "+parseInt(rowTableData["Time"].slice(0,2))+" "+parseInt(rowTableData["Time"].slice(3,5))+" "+parseInt(rowTableData["Time"].slice(6)))
                d=new Date(year=parseInt(rowTableData["Date"].slice(0,4)),month=(parseInt(rowTableData["Date"].slice(5,7))-1),day=parseInt(rowTableData["Date"].slice(8)),hour=parseInt(rowTableData["Time"].slice(0,2)),minute=parseInt(rowTableData["Time"].slice(3,5)),second=parseInt(rowTableData["Time"].slice(6)))
                //alert("d.getTime()= "+d.getTime()+ "     2*60*d.getTimezoneOffset():  "+2*60*d.getTimezoneOffset())
-               var dttimestamp=d.getTime()/1000-2*120*d.getTimezoneOffset()
-               var dt=new Date(dttimestamp*1000) 
+               var dttimestamp=d.getTime()-60*d.getTimezoneOffset()*1000
+               var dt=new Date(dttimestamp) 
                //alert("Timestamp: "+Math.trunc(d2.getTime()/1000))
                //alert(s) 
                rowTableData["timestamp"]=Math.trunc(dt.getTime()/1000);
