@@ -81,7 +81,7 @@
       var paramString="?";
       for (const param of paramObj["parameters"]){
          if (lastTime!=-1 && param[0]=="start"){
-            paramString+=param[0]+"="+lastTime+"&";
+            paramString+=param[0]+"="+(lastTime+1)+"&";
             continue;
          }
          if (lastTime!=-1 && param[0]=="end"){
