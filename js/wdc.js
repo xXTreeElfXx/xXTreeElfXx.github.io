@@ -78,9 +78,7 @@
       var paramObj = JSON.parse(tableau.connectionData);
       var lastTime = parseInt(table.incrementValue || -1);
       var paramString="?";
-      alert(lastTime)
       for (const param of paramObj["parameters"]){
-         alert("param[0] "+param[0] + typeof param[0]+" param[1] "+param[1]+typeof param[1])
          if (lastTime!=-1 && param[0]=="start"){
             paramString+=param[0]+"="+(lastTime+1)+"&";
             continue;
@@ -89,13 +87,11 @@
             continue;
          }
          if (param[0].length>0 && param[1].length>0) {
-            alert("paramString!: param[0] "+param[0]+" param[1] "+param[1])
             paramString+=param[0]+"="+param[1]+"&";
          };
       };
       paramString=paramString.slice(0,-1);
       var user_url = paramObj["user_url"] + paramString;
-      alert(user_url)
       apiCall={
          url: user_url,
          type: "GET",
