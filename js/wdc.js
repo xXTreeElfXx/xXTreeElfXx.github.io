@@ -119,7 +119,7 @@
             for (var col_idx = 0; col_idx<colsdistinct.length; col_idx++) { 
                rowTableData[colsdistinct[col_idx]]=splitRow[col_idx];
             };
-            
+              
             if (rowTableData["Date"]!=null && rowTableData["Time"]!=null){
                //alert("Time:"+rowTableData["Time"]+"  Date:"+rowTableData["Date"])  
                
