@@ -50,7 +50,7 @@
             };
          };  
          for (var x = 0; x<columns.length; x++){ //columns.length
-            var res=checkDistinct(colsdistinct,columns[x],0);
+            var res=checkDistinct(colsdistinct,columns[x],0); 
             colsdistinct.push(res);
             y = {  
                id: colsdistinct[colsdistinct.length-1],
